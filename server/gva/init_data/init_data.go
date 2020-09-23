@@ -411,7 +411,7 @@ func InitSysDataAuthorityId() (err error) {
 		{"9528", "8881"},
 		{"9528", "9528"},
 	}
-	if tx.Table("sys_data_authority_ids").Create(&insert).Error != nil { // 遇到错误时回滚事务
+	if tx.Table("sys_data_authority_id").Create(&insert).Error != nil { // 遇到错误时回滚事务
 		tx.Rollback()
 	}
 	return tx.Commit().Error
@@ -481,5 +481,5 @@ func InitData() {
 	if err != nil {
 		global.GVA_LOG.Error("initialize data failed", zap.Any("err", err))
 	}
-	global.GVA_LOG.Debug("initialize data success")
+	global.GVA_LOG.Info("initialize data success")
 }
